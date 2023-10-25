@@ -2,63 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Text1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="선택을 시작 하겠습니까?" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/ChkAgree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="시작함" />
-
-    <TextView
-        android:id="@+id/Text2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="좋아하는 애완동물은?"
-        android:visibility="invisible" />
-
-    <RadioGroup
-        android:id="@+id/Rgroup1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible">
-
-        <RadioButton
-            android:id="@+id/RdoDog"
-            android:layout_width="match_parent"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="강아지" />
+            android:text="btn1" />
 
-        <RadioButton
-            android:id="@+id/RdoCat"
-            android:layout_width="match_parent"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="고양이" />
+            android:text="btn2" />
+    </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/RdoRabbit"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00FF00"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토끼" />
-    </RadioGroup>
+            android:text="btn3" />
 
-    <Button
-        android:id="@+id/OkBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="선택 완료"
-        android:visibility="invisible" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn4" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ImgPet"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#0000ff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn5" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn6" />
+    </LinearLayout>
+
 </LinearLayout>
