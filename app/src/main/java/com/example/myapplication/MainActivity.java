@@ -1,106 +1,104 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText edit1, edit2;
-    Button btnAdd, btnSub, btnMul, btnDiv;
-    TextView textResult;
-    String num1, num2;
-    Integer result;
-    Button[] numButtons = new Button[0];
-    Integer[] numBtnIDs = {R.id.BtnNum0, R.id.BtnNum1, R.id.BtnNum2, R.id.BtnNum3, R.id.BtnNum4, R.id.BtnNum5, R.id.BtnNum6, R.id.BtnNum7, R.id.BtnNum8, R.id.BtnNum9};
-    int i;
+    Chronometer chrono;
+    Button btnStart, btnEnd;
+    RadioButton rdoCal, rdoTime;
+    CalendarView calView;
+    TimePicker tPicker;
+    TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
+    int selectYear, selectMonth, selectDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("테이블 레이아웃 계산기");
+        setTitle("시간예약");
 
-        edit1 = (EditText) findViewById(R.id.Edit1);
-        edit2 = (EditText) findViewById(R.id.Edit2);
-        btnAdd = (Button) findViewById(R.id.BtnAdd);
-        btnSub = (Button) findViewById(R.id.BtnSub);
-        btnMul = (Button) findViewById(R.id.BtnMul);
-        btnDiv = (Button) findViewById(R.id.BtnDiv);
+        btnStart = (Button) findViewById(R.id.btnStart);
+        btnEnd = (Button) findViewById(R.id.btnEnd);
 
-        textResult = (TextView) findViewById(R.id.TextResult);
+        chrono = (Chronometer) findViewById(R.id.chronometer1);
 
-        btnAdd.setOnTouchListener(new View.OnTouchListener() {
+        rdoCal = (RadioButton) findViewById(R.id.rdoCal);
+        rdoTime = (RadioButton) findViewById(R.id.rdoTime);
+
+        tPicker = (TimePicker) findViewById(R.id.timePicker1);
+        calView = (CalendarView) findViewById(R.id.calendarView1);
+
+        tvYear = (TextView) findViewById(R.id.tvYear);
+        tvMonth = (TextView) findViewById(R.id.tvMonth);
+        tvDay = (TextView) findViewById(R.id.tvDay);
+        tvHour = (TextView) findViewById(R.id.tvHour);
+        tvMinute = (TextView) findViewById(R.id.tvMinute);
+
+        tPicker.setVisibility(View.INVISIBLE);
+        calView.setVisibility(View.INVISIBLE);
+
+        rdoCal.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                num1 = edit1.getText().toString();
-                num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) + Integer.parseInt(num2);
-                textResult.setText("계산결과 : " + result.toString());
-                return false;
+            public void onClick(View v) {
+                tPicker.setVisibility(View.VISIBLE);
+                calView.setVisibility(View.INVISIBLE);
+            }
+        });
+        rdoTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tPicker.setVisibility(View.INVISIBLE);
+                calView.setVisibility(View.VISIBLE);
             }
         });
 
-        btnDiv.setOnTouchListener(new View.OnTouchListener() {
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                num1 = edit1.getText().toString();
-                num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) - Integer.parseInt(num2);
-                textResult.setText("계산결과 : " + result.toString());
-                return false;
+            public void onClick(View v) {
+                chrono.setBase(SystemClock.elapsedRealtime());
+                chrono.start();
+                chrono.setTextColor(Color.RED);
+
+
             }
         });
-
-        btnMul.setOnTouchListener(new View.OnTouchListener() {
+        btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                num1 = edit1.getText().toString();
-                num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) * Integer.parseInt(num2);
-                textResult.setText("계산결과 : " + result.toString());
-                return false;
+            public void onClick(View v) {
+                chrono.stop();
+                chrono.setTextColor(Color.BLUE);
+                tvYear.setText(Integer.toString(selectYear));
+                tvMonth.setText(Integer.toString(selectMonth));
+                tvDay.setText(Integer.toString(selectDay));
+
+                tvHour.setText(Integer.toString(tPicker.getHour()));
+                tvMinute.setText(Integer.toString(tPicker.getMinute()));
             }
         });
-
-        btnDiv.setOnTouchListener(new View.OnTouchListener() {
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                num1 = edit1.getText().toString();
-                num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) / Integer.parseInt(num2);
-                textResult.setText("계산결과 : " + result.toString());
-                return false;
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                selectYear = year;
+                selectMonth = month + 1;
+                selectDay = dayOfMonth;
             }
         });
-
-
-        for (i = 0; i < numBtnIDs.length; i++) {
-            numButtons[i] = (Button) findViewById(numBtnIDs[i]);
-        }
-        for (i = 0; i < numBtnIDs.length; i++) {
-            final int index;
-            index = i;
-            numButtons[index].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (edit1.isFocused() == true) {
-                        num1 = edit1.getText().toString() + numButtons[index].getText().toString();
-                        edit1.setText(num1);
-                    } else if (edit2.isFocused() == true) {
-                        num2 = edit2.getText().toString() + numButtons[index].getText().toString();
-                        edit2.setText(num2);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "먼저 에디트 텍스트를 선택하세요.", Toast.LENGTH_SHORT);
-                    }
-                }
-            });
-        }
     }
+
 }

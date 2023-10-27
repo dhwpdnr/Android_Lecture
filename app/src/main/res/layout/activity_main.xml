@@ -1,137 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/Edit1"
-            android:layout_height="80dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:hint="숫자 1 입력" />
-    </TableRow>
-
-    <TableRow>
-
-        <EditText
-            android:id="@+id/Edit2"
-            android:layout_height="80dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:hint="숫자 2 입력" />
-    </TableRow>
-
-    <TableRow>
+        <Chronometer
+            android:id="@+id/chronometer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:format="예약에 걸린 시간 : %s"
+            android:gravity="center"
+            android:textSize="20dp" />
 
         <Button
-            android:id="@+id/BtnNum0"
-            android:layout_weight="1"
-            android:text="0" />
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="예약시작" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rdoCal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="날짜 설정 (캘린더 뷰)" />
+
+        <RadioButton
+            android:id="@+id/rdoTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시간 설정" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CalendarView
+                android:id="@+id/calendarView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:showWeekNumber="false" />
+
+            <TimePicker
+                android:id="@+id/timePicker1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCCCCC">
 
         <Button
-            android:id="@+id/BtnNum1"
-            android:layout_weight="1"
-            android:text="1" />
-
-        <Button
-            android:id="@+id/BtnNum2"
-            android:layout_weight="1"
-            android:text="2" />
-
-        <Button
-            android:id="@+id/BtnNum3"
-            android:layout_weight="1"
-            android:text="3" />
-
-        <Button
-            android:id="@+id/BtnNum4"
-            android:layout_weight="1"
-            android:text="4" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/BtnNum5"
-            android:layout_weight="1"
-            android:text="5" />
-
-        <Button
-            android:id="@+id/BtnNum6"
-            android:layout_weight="1"
-            android:text="6" />
-
-        <Button
-            android:id="@+id/BtnNum7"
-            android:layout_weight="1"
-            android:text="7" />
-
-        <Button
-            android:id="@+id/BtnNum8"
-            android:layout_weight="1"
-            android:text="8" />
-
-        <Button
-            android:id="@+id/BtnNum9"
-            android:layout_weight="1"
-            android:text="9" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/BtnAdd"
-            android:layout_margin="5dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:text="더하기" />
-
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/BtnSub"
-            android:layout_margin="5dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:text="빼기" />
-
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/BtnMul"
-            android:layout_margin="5dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:text="곱하기" />
-
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/BtnDiv"
-            android:layout_margin="5dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:text="나누기" />
-
-    </TableRow>
-
-    <TableRow>
+            android:id="@+id/btnEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약완료" />
 
         <TextView
-            android:id="@+id/TextResult"
-            android:layout_margin="5dp"
-            android:layout_span="5"
-            android:layout_weight="1"
-            android:text="계산결과 : "
-            android:textColor="#ff0000"
-            android:textSize="20dp" />
-    </TableRow>
-</TableLayout>
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="년" />
+        <TextView
+            android:id="@+id/tvMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="월" />
+        <TextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일" />
+        <TextView
+            android:id="@+id/tvHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시" />
+        <TextView
+            android:id="@+id/tvMinute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="분" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
