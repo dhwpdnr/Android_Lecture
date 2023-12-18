@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -27,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Button clicked!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Button clicked!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("제목입니다");
+                dlg.setMessage("내용입니다");
+                dlg.setIcon(R.mipmap.ic_launcher);
+                dlg.show();
             }
         });
     }
