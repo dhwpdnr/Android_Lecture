@@ -6,21 +6,24 @@
     android:layout_margin="5dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="사용자 이름" />
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이메일" />
+    <EditText
+        android:id="@+id/edtDiary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ff00"
+        android:lines="8" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnWrite"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="여기를 클릭" />
+        android:enabled="false"
+        android:text="Button" />
 </LinearLayout>
